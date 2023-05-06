@@ -45,8 +45,22 @@ class Ui_mainWindow(object):
         
         self.outputLabel = QtWidgets.QLabel(self.centralwidget)
         self.outputLabel.setGeometry(QtCore.QRect(50, 475, 400, 150))
-        self.outputLabel.setText("")
         self.outputLabel.setObjectName("outputLabel")
+        
+        self.cookieQuantity = QtWidgets.QTextEdit(self.centralwidget)
+        self.cookieQuantity.setGeometry(QtCore.QRect(270, 150, 60, 40))
+        self.cookieQuantity.setFont(font)
+        self.cookieQuantity.setObjectName("cookieQuantity")
+        
+        self.sandwichQuantity = QtWidgets.QTextEdit(self.centralwidget)
+        self.sandwichQuantity.setGeometry(QtCore.QRect(270, 250, 60, 40))
+        self.sandwichQuantity.setFont(font)
+        self.sandwichQuantity.setObjectName("sandwichQuantity")
+        
+        self.waterQuantity = QtWidgets.QTextEdit(self.centralwidget)
+        self.waterQuantity.setGeometry(QtCore.QRect(270, 350, 60, 40))
+        self.waterQuantity.setFont(font)
+        self.waterQuantity.setObjectName("waterQuantity")
         
         self.cookieButton = QtWidgets.QPushButton(self.centralwidget)
         self.cookieButton.setGeometry(QtCore.QRect(350, 150, 100, 40))
@@ -97,6 +111,10 @@ class Ui_mainWindow(object):
         self.doneButton.setText(_translate("mainWindow", "Done"))
         self.resetButton.setText(_translate("mainWindow", "Reset Cart"))
         self.cartButton.setText(_translate("mainWindow", "View Cart"))
+        self.outputLabel.setText(_translate("mainWindow", ""))
+        self.cookieQuantity.setText(_translate("mainWindow", '1'))
+        self.sandwichQuantity.setText(_translate("mainWindow", '1'))
+        self.waterQuantity.setText(_translate("mainWindow", '1'))
         self.cookieButton.setText(_translate("mainWindow", "Add to cart"))
         self.sandwichButton.setText(_translate("mainWindow", "Add to cart"))
         self.waterButton.setText(_translate("mainWindow", "Add to cart"))

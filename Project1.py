@@ -21,21 +21,29 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
         self.sandwichButton.clicked.connect(lambda: self.add_item("sandwich"))
         self.waterButton.clicked.connect(lambda: self.add_item("water"))
 
-
     def add_item(self, item: str) -> None:
         """
-        Add an item to the cart and update the output label.
+        Add an item and quantity to the cart and update the output label.
 
         Args:
             item (str): The item to be added to the cart.
         """
-        self.cart[item] += 1
-        if self.cart[item] == 1:
-            self.outputLabel.setText(f"Added {self.cart[item]} {item.capitalize()}")
-        elif item == 'sandwich':
-            self.outputLabel.setText(f"Added {self.cart[item]} {item.capitalize()}es")
-        else:
-            self.outputLabel.setText(f"Added {self.cart[item]} {item.capitalize()}s")
+        item_quantity = f'{item}Quantity'
+        quantity = getattr(self, item_quantity).toPlainText()
+        try:
+            if quantity.isdigit():
+                quantity = int(quantity)
+                self.cart[item] += quantity
+                if self.cart[item] == 1:
+                    self.outputLabel.setText(f"{self.cart[item]} {item.capitalize()} in cart")
+                elif item == 'sandwich':
+                    self.outputLabel.setText(f"{self.cart[item]} {item.capitalize()}es in cart")
+                else:
+                    self.outputLabel.setText(f"{self.cart[item]} {item.capitalize()}s in cart")
+            else:
+                raise ValueError
+        except(ValueError):
+            self.outputLabel.setText('Error, Enter Integers Only!')
         self.outputLabel.repaint()
 
     def show_cart(self) -> None:
@@ -60,6 +68,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
         self.cookieButton.setVisible(True)
         self.sandwichButton.setVisible(True)
         self.waterButton.setVisible(True)
+        self.cookieQuantity.setVisible(True)
+        self.sandwichQuantity.setVisible(True)
+        self.waterQuantity.setVisible(True)
         self.cookieLabel.setVisible(True)
         self.sandwichLabel.setVisible(True)
         self.waterLabel.setVisible(True)
@@ -76,6 +87,9 @@ class MainWindow(QtWidgets.QMainWindow, Ui_mainWindow):
         self.cookieButton.setVisible(False)
         self.sandwichButton.setVisible(False)
         self.waterButton.setVisible(False)
+        self.cookieQuantity.setVisible(False)
+        self.sandwichQuantity.setVisible(False)
+        self.waterQuantity.setVisible(False)
         self.cookieLabel.setVisible(False)
         self.sandwichLabel.setVisible(False)
         self.waterLabel.setVisible(False)
